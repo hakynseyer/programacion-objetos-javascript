@@ -1,0 +1,37 @@
+{
+  "empty": "No puede estar vacio",
+  "type": {
+    "text": "Debe de ser un texto y no contener solo números",
+    "number": "Debe de ser un número completo, sin ninguna letra",
+    "email": "No es un email valido",
+    "password": {
+      "special": "Debe de contener al menos 3 caracteres especiales",
+      "letters": "Debe de contener al menos 3 letras",
+      "numbers": "Debe de contener al menos 3 números"
+    },
+    "boolean": {
+      "default": "Debe de ser un dato boleano",
+      "true": "Debe de ser un boleano verdadero",
+      "false": "Debe de ser un boleano falso"
+    },
+    "default": "Error al intentar validar este atributo"
+  },
+  "min": "No puede ser menor a ##### caracteres",
+  "max": "No puede ser mayor a ##### caracteres",
+  "equal": "Debe de ser igual al campo #####",
+  "unequal": {
+    "simple": "No debe de ser igual al campo #####",
+    "array": "No debe de ser igual a ningún campo de esta lista #####",
+    "default": "Error al intentar validar este atributo"
+  },
+  "numbers": {
+    "minimum": "El límite mínimo requerido es de #####",
+    "maximum": "El límite máximo requerido es de #####",
+    "default": "Error al intentar validar este atributo"
+  },
+  "extensions": {
+    "image":
+      "El tipo de imagen requerido debe de contener como extensión: #####",
+    "default": "Error al intentar validar este atributo"
+  }
+}

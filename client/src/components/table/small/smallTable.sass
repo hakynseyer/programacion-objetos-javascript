@@ -1,0 +1,51 @@
+.table-small
+  width: 100%
+
+  border-collapse: collapse
+
+  +ele('header')
+    border-bottom: solid 1px map-get($color-hloo, light-gray)
+
+    +ele('row')
+
+      +ele('column')
+        padding: 0.5em 0em
+
+        font-size: .8125em
+        font-weight: 300
+
+        text-transform: uppercase
+
+  +ele('body')
+
+    +ele('row')
+      &:hover
+        cursor: pointer
+
+        background-color: map-get($color-hloo, light-gray)
+
+      +ele('column')
+        padding: .5em 0em
+
+        font-size: .8125em
+        font-weight: 300
+
+        text-align: center
+
+        +ele('checkbox')
+          width: 100%
+
+          margin: auto 0
+
+          display: flex
+          justify-content: center
+          align-items: center
+
+          cursor: default
+
+          +ele('input')
+            display: none
+
+          label
+            i
+              font-size: 1.375em

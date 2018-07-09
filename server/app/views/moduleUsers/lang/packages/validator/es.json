@@ -1,0 +1,9 @@
+{
+  "server": ["Hubo un error en el servidor al intentar validar algunos campos"],
+  "alias": {
+    "unique": "Existe otro usuario con el mismo alias"
+  },
+  "email": {
+    "unique": "Este email ya se encuentra registrado"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "form": {
+    "title": "Nuevo Usuario",
+    "buttons": [
+      {
+        "title": "limpiar",
+        "id": "clearButton"
+      },
+      {
+        "title": "enviar",
+        "id": "sendButton"
+      }
+    ]
+  },
+  "formName": {
+    "label": "nombre completo",
+    "type": "text",
+    "name": "name"
+  },
+  "formAlias": {
+    "label": "alias",
+    "type": "text",
+    "name": "alias"
+  },
+  "formEmail": {
+    "label": "email",
+    "type": "email",
+    "name": "email"
+  },
+  "formPassword": {
+    "label": "contraseña",
+    "type": "password",
+    "name": "password"
+  },
+  "formRepeatPassword": {
+    "label": "repetir contraseña",
+    "type": "password",
+    "name": "repeatPassword"
+  },
+  "formState": {
+    "label": "estado del usuario",
+    "name": "state",
+    "checkboxes": [
+      {
+        "id": "state",
+        "value": null,
+        "label": ["activo", "inactivo"]
+      }
+    ]
+  }
+}

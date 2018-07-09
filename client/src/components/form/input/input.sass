@@ -1,0 +1,17 @@
+.form__group
+  +ele('input')
+    flex-basis: 80%
+
+    padding: .5em 1em
+
+    border-bottom: solid 1px map-get($color-hloo, light-gray)
+    box-sizing: border-box
+
+    font-weight: bold
+
+    color: map-get($color-hloo, purple)
+
+    &:focus
+      border-bottom: solid 1px map-get($color-hloo, purple)
+
+      color: map-get($color-hloo, gray)

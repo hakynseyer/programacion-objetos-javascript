@@ -1,0 +1,75 @@
+.form
+  padding: 1em 1.5em
+
+  box-sizing: border-box
+
+  border: solid 1px solid map-get($color-hloo, light-gray)
+  border-radius: 10px
+
+  +ele('header')
+    margin-bottom: 1.5em
+
+    display: flex
+    justify-content: space-between
+
+    +ele('title')
+      flex-basis: 0
+      flex-grow: 2
+
+      font-size: 1.5em
+      font-weight: 400
+
+      text-transform: capitalize
+
+      color: map-get($color-hloo, light-gray)
+
+    +ele('buttons')
+      flex-basis: 0
+      flex-grow: 1
+
+      display: flex
+      justify-content: flex-end
+      align-items: center
+
+      +ele('button')
+        height: 100%
+
+        padding: .5em 2em
+        margin-right: .5em
+
+        border: solid 1px map-get($color-hloo, blue)
+        border-radius: 5px
+        box-sizing: border-box
+
+        font-weight: bold
+
+        text-transform: capitalize
+
+        color: map-get($color-hloo, blue)
+
+        cursor: pointer
+
+        &:last-of-type
+          margin-right: 0
+
+        +mod('clear')
+          border: none
+
+          text-transform: lowercase
+
+          color: map-get($color-hloo, red)
+
+  +ele('group')
+    width: 100%
+
+    padding: .5em 1em
+
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+    font-size: .875em
+
+    text-align: right
+
+    box-sizing: border-box

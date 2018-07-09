@@ -1,0 +1,22 @@
+extends ../../components/main/template.pug
+
+block content
+  section.module
+    //- .module__title Titulo
+    //- .module__small-table
+    //-   img(src=require('|Assets/images/a.png'), alt="hloo logo")
+    //- .module__small-table Pequeña Tabla vs TABLA GRANDE
+    //- .module__form Formulario
+    //- .module__menu Menu
+    //- .module__tools Tablero de herramientas
+
+
+append scripts
+  script(src='/node_modules/socket.io-client/dist/socket.io.js')
+
+  script(type="text/javascript").
+    const SocketIO = io()
+    //- socket = io.connect('localhost:8000')
+    //- socket.on('connect', function () { console.log("socket connected") })
+    SocketIO.emit('HOLA')
+    var Resources = JSON.parse('{{ JSON.stringify(Resources)}}')

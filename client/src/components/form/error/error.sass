@@ -1,0 +1,47 @@
+=element-error()
+  +ele('error')
+    width: 100%
+
+    padding: .5em 1em
+
+    display: inline-block
+
+    &:before
+      content: '\f057'
+
+      margin-right: .5em
+
+      font-size: 1em
+      font-family: Font Awesome\ 5 Free
+
+.form__errors
+  width: 100%
+
+  padding: .5em 1em
+
+  box-sizing: border-box
+
+  +ele('server')
+    padding: .5em
+
+    font-size: .875em
+
+    border: dashed 1px map-get($color-hloo, red)
+
+    color: map-get($color-hloo, red)
+
+    display: flex
+    flex-direction: column
+
+    +element-error()
+
+  +ele('fields')
+    font-size: .750em
+    // font-weight: bold
+
+    color: map-get($color-hloo, red)
+
+    display: flex
+    flex-direction: column
+
+    +element-error()
