@@ -4,8 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { entriesJS, entriesPug } = require('./webpack/entries')
 
 const paths = {
-  output: './public',
-  public: '/public'
+  views: {
+    output: '../dist/views',
+    publicPath: '/views'
+  },
+  images: {
+    output: '../assets/images/app',
+    publicPath: '/images/app'
+  }
 }
 
 const webpackConfig = {
@@ -22,8 +28,8 @@ const webpackConfig = {
   entry: entriesJS,
   output: {
     filename: '[name]/[name].js',
-    path: path.resolve(__dirname, paths.output),
-    publicPath: paths.public
+    path: path.resolve(__dirname, paths.views.output),
+    publicPath: paths.views.publicPath
   },
   module: {
     rules: [
@@ -35,13 +41,9 @@ const webpackConfig = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {loader: 'file-loader', options: {
-            // name (file) {
-            //   const origin = file.split('\\')
-            //   origin.splice(-1, 1)
-            //   const folder = origin.pop()
-            // }
-            name: 'assets/server/images/[name].[ext]',
-            publicPath: paths.public
+            name: '[name].[ext]',
+            outputPath: paths.images.output,
+            publicPath: paths.images.publicPath
           }},
           // {loader: 'image-webpack-loader'}
         ]
@@ -50,7 +52,7 @@ const webpackConfig = {
         test: /\.sass$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          publicPath: paths.public,
+          publicPath: paths.views.publicPath,
           use: [
             {loader: 'css-loader'},
             {loader: 'postcss-loader', options: {
@@ -67,10 +69,14 @@ const webpackConfig = {
       {
         test: /\.js$/,
         exclude: [/node_modules/, /webpack/],
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015']
+            }
+          }
+        ]
       }
     ]
   },
@@ -82,7 +88,7 @@ const webpackConfig = {
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, paths.output),
+    contentBase: path.resolve(__dirname, paths.views.output),
     compress: true,
     stats: 'errors-only',
     open: true,

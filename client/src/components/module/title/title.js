@@ -11,7 +11,7 @@ class TitleElements {
   title () {
     const title = document.createElement('span')
     title.classList.add('module__title__name')
-    const titleText = document.createTextNode(this.titleName? this.titleName: 'Module')
+    const titleText = document.createTextNode(this.TITLE? this.TITLE: 'Module')
     title.appendChild(titleText)
 
     return title
@@ -20,18 +20,17 @@ class TitleElements {
 
 class Title extends TitleElements {
   get getTitle () {
-    return this.titleName
+    return this.TITLE
   }
 
-  set setTitle (title) {
-    this.titleName = title
+  set setProps (props) {
+    this.TITLE = props.TITLE
     this.building()
   }
 
-  constructor (Emitter) {
+  constructor () {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
   }
 
@@ -45,8 +44,8 @@ class Title extends TitleElements {
 
   }
 
-  static init(Emitter) {
-    return new Title(Emitter)
+  static init() {
+    return new Title()
   }
 }
 

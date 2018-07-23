@@ -1,0 +1,73 @@
+.seeker
+  width: 100%
+
+  margin-bottom: 1em
+
+  box-sizing: border-box
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  +ele('search')
+    width: 80%
+    height: 100%
+
+    border: solid 1px solid map-get($color-hloo, light-gray)
+    border-radius: 10px
+
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    overflow: hidden
+
+    +ele('input')
+      width: 80%
+
+      padding: .25em .5em
+
+      font-size: .75em
+      font-weight: bold
+
+      color: map-get($color-hloo, medium-gray)
+
+    +ele('button')
+      width: 20%
+      height: 100%
+
+      padding: 0
+
+      background-color: map-get($color-hloo, light-gray)
+
+      cursor: pointer
+
+      +ele('icon')
+        color: map-get($color-hloo, medium-gray)
+
+        font-size: 1.2em
+
+  +ele('buttons')
+    width: 20%
+    height: 100%
+
+    padding: 0em .25em
+
+    box-sizing: border-box
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+    +ele('button')
+      padding: 0
+
+      cursor: pointer
+
+      +ele('icon')
+        font-size: 1.3em
+
+        color: map-get($color-hloo, medium-gray)
+
+        +mod('active')
+          color: map-get($color-hloo, green)

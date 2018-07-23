@@ -1,0 +1,16 @@
+{
+  "tableSmall": {
+    "header": ["id", "alias", "acciones"],
+    "pagination": {
+      "pageLeft": "página"
+    },
+    "ordering": {
+      "label": "ordernar",
+      "labelBaseDefault": "Esperando...",
+      "options": ["alias", "estado"]
+    },
+    "seeker": {
+      "placeholder": "Buscar por alias o email"
+    }
+  }
+}

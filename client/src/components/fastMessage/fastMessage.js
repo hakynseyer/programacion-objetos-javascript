@@ -35,9 +35,9 @@ class FastMessageElements {
   container () {
     const container = document.createElement('div')
     container.classList.add('fast-message')
-    container.setAttribute('id', this.id)
+    container.setAttribute('id', this.ID)
 
-    switch (this.type) {
+    switch (this.TYPE) {
       case 'success':
         container.classList.add('fast-message--success')
         break
@@ -52,7 +52,7 @@ class FastMessageElements {
   fastMessageTitle () {
     const span = document.createElement('span')
     span.classList.add('fast-message__title')
-    const spanText = document.createTextNode(this.title)
+    const spanText = document.createTextNode(this.TITLE)
 
     span.appendChild(spanText)
 
@@ -62,7 +62,7 @@ class FastMessageElements {
   fastMessageContent () {
     const p = document.createElement('p')
     p.classList.add('fast-message__content')
-    const pText = document.createTextNode(this.content)
+    const pText = document.createTextNode(this.CONTENT)
 
     p.appendChild(pText)
 
@@ -72,18 +72,17 @@ class FastMessageElements {
 
 class FastMessage extends FastMessageElements {
   set setProps (props) {
-    this.id = props.id
-    this.type = props.type
-    this.title = props.title
-    this.content = props.content
+    this.ID = props.ID
+    this.TYPE = props.TYPE
+    this.TITLE = props.TITLE
+    this.CONTENT = props.CONTENT
 
     this.building()
   }
 
-  constructor (Emitter, output) {
+  constructor (output) {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
 
     this.output = output
@@ -107,20 +106,20 @@ class FastMessage extends FastMessageElements {
   }
 
   listeners () {
-    this.Emitter.on('[fastMessage]:hideMessageComplete', (props) => {
-      this.setProps = props.setProps
+    _EMITTER.on('[fastMessage]:lauch', (props) => {
+      this.setProps = props
       if (Object.keys(props).length) {
-        FastMessageActions.hideMessageComplete(props.id, props.delay, () => {
+        FastMessageActions.hideMessageComplete(props.ID, props.DELAY, () => {
           setTimeout(() => {
-            FastMessageActions.destroyMessage(props.id)
+            FastMessageActions.destroyMessage(props.ID)
           }, 1000)
         })
       }
     })
   }
 
-  static init (Emitter, output) {
-    return new FastMessage(Emitter, output)
+  static init (output) {
+    return new FastMessage(output)
   }
 }
 

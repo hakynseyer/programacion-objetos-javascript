@@ -1,7 +1,5 @@
 {
   "userCreate": {
-    "type": "success",
-    "id": "userCreate",
     "title": "nuevo usuario: #####",
     "content": "Creado el #####"
   }

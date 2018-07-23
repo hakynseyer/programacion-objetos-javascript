@@ -2,8 +2,8 @@ class LabelElements {
   container () {
     const container = document.createElement('label')
     container.classList.add('form__group__label')
-    if (this.id) container.setAttribute('for', this.id)
-    const containerText = document.createTextNode(this.label ? this.label : 'label')
+    if (this.ID) container.setAttribute('for', this.ID)
+    const containerText = document.createTextNode(this.LABEL ? this.LABEL : 'label')
 
     container.appendChild(containerText)
 
@@ -17,26 +17,25 @@ class Label extends LabelElements {
   }
 
   set setProps (props) {
-    this.id = props.id
-    this.label = props.label
+    this.ID = props.ID
+    this.LABEL = props.LABEL
   }
 
-  constructor (Emitter) {
+  constructor () {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
   }
 
   listeners () {
-    this.Emitter.on('[formLabel]:getLabel', (props) => {
+    _EMITTER.on('[formLabel]:getLabel', (props) => {
       this.setProps = props
       return this.getLabel
     })
   }
 
-  static init (Emitter) {
-    return new Label(Emitter)
+  static init () {
+    return new Label()
   }
 }
 

@@ -12,11 +12,12 @@ block content
 
 
 append scripts
+  script(src="/js/eventEmitter.js")
   script(src='/node_modules/socket.io-client/dist/socket.io.js')
 
   script(type="text/javascript").
-    const SocketIO = io()
-    //- socket = io.connect('localhost:8000')
-    //- socket.on('connect', function () { console.log("socket connected") })
-    SocketIO.emit('HOLA')
-    var Resources = JSON.parse('{{ JSON.stringify(Resources)}}')
+    const _EMITTER = new EventEmitter()
+
+    const _SOCKET = io()
+
+    const _RESOURCES = JSON.parse('{{ JSON.stringify(_RESOURCES)}}')

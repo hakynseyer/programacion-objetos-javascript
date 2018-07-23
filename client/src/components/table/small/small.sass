@@ -1,0 +1,91 @@
+.table-small
+  order: 2
+
+  width: 100%
+
+  margin: 0
+
+  border-collapse: collapse
+
+
+  +ele('header')
+    border-bottom: solid 1px map-get($color-hloo, light-gray)
+
+    +ele('row')
+
+      +ele('column')
+        padding: 0.5em 0em
+
+        font-size: .8125em
+        font-weight: bold
+
+        text-transform: uppercase
+
+        color: map-get($color-hloo, medium-gray)
+
+  +ele('body')
+
+    +ele('row')
+      &:hover
+        cursor: default
+
+        background-color: map-get($color-hloo, light-gray)
+
+      +ele('column')
+        padding: .5em 0em
+
+        font-size: .8125em
+        font-weight: 300
+
+        text-align: center
+
+        color: map-get($color-hloo, medium-gray)
+
+        +ele('actions')
+          width: 100%
+          height: 100%
+
+          margin: auto 0
+
+          display: flex
+          justify-content: center
+          align-items: flex-end
+
+          +ele('edit')
+            margin-right: .5em
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            +ele('button')
+              padding: 0
+
+              cursor: pointer
+
+              +ele('icon')
+                font-size: 1.375em
+
+                color: map-get($color-hloo, medium-gray)
+
+          +ele('checkbox')
+            margin-right: .5em
+
+            display: flex
+            justify-content: center
+            align-items: flex-end
+
+            +ele('input')
+              display: none
+
+            +ele('label')
+              display: flex
+              justify-content: center
+              align-items: flex-end
+
+              cursor: pointer
+
+              +ele('icon')
+                font-size: 1.4375em
+
+                color: map-get($color-hloo, medium-gray)

@@ -1,3 +1,4 @@
+import { DATA_FORM } from '../global/DATA'
 import { Validator, ValidatorMethods } from '|Assets/js/validator'
 
 const errors = {
@@ -26,7 +27,7 @@ function checkErrors () {
   return res
 }
 
-class Validate {
+class VALIDATES {
   constructor ({Name, Alias, Email, Password, RepeatPassword, State}) {
     resetErrors()
 
@@ -34,7 +35,7 @@ class Validate {
     this.Alias(Alias)
     this.Email(Email)
     this.Password(Password)
-    this.RepeatPassword(RepeatPassword, {data: Password, message: Resources.Lang.form.formPassword.label})
+    this.RepeatPassword(RepeatPassword, {data: Password, message: DATA_FORM.PASSWORD.LABEL})
     this.State(State)
   }
 
@@ -82,13 +83,15 @@ class Validate {
     err = Validator.type('boolean', {value})
     if (err !== null) errors.State.push(err)
   }
+
+  static init (values) {
+    new VALIDATES(values)
+
+    if (checkErrors()) return errors
+
+    return null
+  }
 }
 
 
-module.exports = values => {
-  new Validate(values)
-
-  if (checkErrors()) return errors
-
-  return null
-}
+module.exports = {VALIDATES_create: VALIDATES}

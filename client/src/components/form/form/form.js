@@ -37,7 +37,7 @@ class FormElements {
   headerTitle () {
     const title = document.createElement('span')
     title.classList.add('form__header__title')
-    const spanText = document.createTextNode(this.title ? this.title : 'Form Title')
+    const spanText = document.createTextNode(this.TITLE ? this.TITLE : 'Form Title')
 
     title.appendChild(spanText)
 
@@ -48,14 +48,14 @@ class FormElements {
     const buttons = document.createElement('div')
     buttons.classList.add('form__header__buttons')
 
-    if (Array.isArray(this.buttons)) {
-      for (const [index, btn] of this.buttons.entries()) {
+    if (Array.isArray(this.BUTTONS)) {
+      for (const [index, btn] of this.BUTTONS.entries()) {
         const button = document.createElement('button')
         button.classList.add('form__header__buttons__button')
         if (index === 0) button.classList.add('form__header__buttons__button--clear')
         button.setAttribute('type', 'button')
-        button.setAttribute('id', btn.id)
-        const buttonText = document.createTextNode(btn.title)
+        button.setAttribute('id', btn.ID)
+        const buttonText = document.createTextNode(btn.TITLE)
 
         button.appendChild(buttonText)
 
@@ -74,7 +74,7 @@ class FormElements {
         if (child.id === 'formErrorsServer') form.removeChild(document.getElementById('formErrorsServer'))
       }
 
-      form.insertBefore(this.Emitter.emit('[formError]:getErrors', {server: errors}), form.childNodes[1])
+      form.insertBefore(_EMITTER.emit('[formError]:getErrors', {server: errors}), form.childNodes[1])
     }
   }
 }
@@ -85,22 +85,21 @@ class Form extends FormElements {
   }
 
   set setProps (props) {
-    this.title = props.title
-    this.buttons = props.buttons
+    this.TITLE = props.TITLE
+    this.BUTTONS = props.BUTTONS
     this.building()
   }
 
-  constructor (Emitter, output) {
+  constructor (output) {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
 
-    this.output = output
+    this.OUTPUT = output
   }
 
   building () {
-    switch (this.output) {
+    switch (this.OUTPUT) {
       case 'module':
         const moduleForm = document.createElement('div')
         moduleForm.classList.add('module__form')
@@ -113,20 +112,20 @@ class Form extends FormElements {
         break
 
       default:
-        console.log(`%c No exists the output: %c"${this.output}"%c by this form container`, styleLogs.error, styleLogs.errorBold, styleLogs.error)
+        console.log(`%c No exists the output: %c"${this.OUTPUT}"%c by this form container`, styleLogs.error, styleLogs.errorBold, styleLogs.error)
     }
   }
 
   listeners () {
-    this.Emitter.on('[formForm]:lauchErrors', errors => {
+    _EMITTER.on('[formForm]:lauchErrors', errors => {
       if (Array.isArray(errors)) this.groupErrors(errors)
     })
 
-    this.Emitter.on('[formForm]:removeErrors', () => FormActions.removeErrors())
+    _EMITTER.on('[formForm]:removeErrors', () => FormActions.removeErrors())
   }
 
-  static init (Emitter, output) {
-    return new Form(Emitter, output)
+  static init (output) {
+    return new Form(output)
   }
 }
 

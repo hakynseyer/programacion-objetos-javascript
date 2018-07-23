@@ -1,51 +1,20 @@
 {
-  "form": {
-    "title": "Nuevo Usuario",
-    "buttons": [
-      {
-        "title": "limpiar",
-        "id": "clearButton"
-      },
-      {
-        "title": "enviar",
-        "id": "sendButton"
-      }
-    ]
+  "container": {
+    "title": "nuevo usuario",
+    "buttons": {
+      "clear": "limpiar",
+      "send": "enviar"
+    }
   },
-  "formName": {
-    "label": "nombre completo",
-    "type": "text",
-    "name": "name"
-  },
-  "formAlias": {
-    "label": "alias",
-    "type": "text",
-    "name": "alias"
-  },
-  "formEmail": {
-    "label": "email",
-    "type": "email",
-    "name": "email"
-  },
-  "formPassword": {
-    "label": "contraseña",
-    "type": "password",
-    "name": "password"
-  },
-  "formRepeatPassword": {
-    "label": "repetir contraseña",
-    "type": "password",
-    "name": "repeatPassword"
-  },
+  "formName": "nombre completo",
+  "formAlias": "alias",
+  "formEmail": "email",
+  "formPassword": "contraseña",
+  "formRepeatPassword": "repetir contraseña",
   "formState": {
     "label": "estado del usuario",
-    "name": "state",
-    "checkboxes": [
-      {
-        "id": "state",
-        "value": null,
-        "label": ["activo", "inactivo"]
-      }
-    ]
+    "checkboxes": {
+      "checkbox_A": ["activo", "inactivo"]
+    }
   }
 }

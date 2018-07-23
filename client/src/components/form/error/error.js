@@ -60,15 +60,14 @@ class Error extends ErrorElements {
     this.errorsServer = errors
   }
 
-  constructor (Emitter) {
+  constructor () {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
   }
 
   listeners () {
-    this.Emitter.on('[formError]:getErrors', data => {
+    _EMITTER.on('[formError]:getErrors', data => {
       if (typeof data.fields !== 'undefined') {
         this.setErrorsFields = data.fields
 
@@ -81,8 +80,8 @@ class Error extends ErrorElements {
     })
   }
 
-  static init (Emitter) {
-    return new Error(Emitter)
+  static init () {
+    return new Error()
   }
 }
 

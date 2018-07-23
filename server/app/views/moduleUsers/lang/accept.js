@@ -6,11 +6,7 @@ const { Files } = require('../../../tools/tools')
 const Lang = (req, state) => {
   const Accept = accepts(req)
 
-  let packages = {
-    validator: {},
-    module: {},
-    form: {}
-  }
+  let packages = {}
 
   switch (Accept.language(languages)) {
     case 'es': case 'es-MX':
@@ -20,7 +16,8 @@ const Lang = (req, state) => {
             validator: Files.RequireJSON(__dirname, '../../../lang/validator/es.json'),
             module: Files.RequireJSON(__dirname, './packages/module/es.json'),
             form: Files.RequireJSON(__dirname, './packages/form/es.json'),
-            fastMessage: Files.RequireJSON(__dirname, './packages/fastMessage/es.json')
+            fastMessage: Files.RequireJSON(__dirname, './packages/fastMessage/es.json'),
+            table: Files.RequireJSON(__dirname, './packages/table/es.json')
           }
           break
         case 'POST':

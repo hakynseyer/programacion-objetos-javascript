@@ -1,4 +1,27 @@
-import styleLogs from '|Assets/js/styleLogs.js'
+const styleLogs = {
+  normal: `
+    font-size: 13px;
+    font-family: monospace;
+    color: gray;
+  `,
+  error: `
+    font-size: 13px;
+    font-family: monospace;
+    color: tomato;
+  `,
+  errorBold: `
+    font-size: 13px;
+    font-family: monospace;
+    font-weight: bold;
+    color: red;
+  `,
+  purpleBold: `
+    font-size: 13px;
+    font-family: monospace;
+    font-weight: bold;
+    color: purple;
+  `
+}
 
 class EventEmitter {
   constructor () {
@@ -28,8 +51,6 @@ class EventEmitter {
     }
   }
 }
-
-module.exports = new EventEmitter()
 
 // Example
 // const emmiter = new EventEmitter()

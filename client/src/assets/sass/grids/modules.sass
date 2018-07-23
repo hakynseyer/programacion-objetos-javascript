@@ -26,11 +26,16 @@
 
     background-color: salmon
 
-  +ele('small-table')
+  +ele('table-small')
     width: 100%
 
     grid-column: 1 / span 3
     grid-row: row-1 / row-3
+
+    display: flex
+    flex-wrap: wrap
+    // justify-content: flex-start
+    align-self: flex-start
 
   +ele('form')
     width: 100%

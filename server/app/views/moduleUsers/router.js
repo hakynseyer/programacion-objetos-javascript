@@ -11,7 +11,7 @@ const Create = {
 module.exports = router => {
   router.get('/module/users', (req, res) => {
     res.render('moduleUsers/moduleUsers.html', {
-      Resources: {
+      _RESOURCES: {
         Title: 'Módulo: Usuariossssss',
         Lang: Lang(req, 'GET')
       }

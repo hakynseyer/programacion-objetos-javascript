@@ -1,0 +1,58 @@
+.ordering
+  width: 100%
+
+  margin-bottom: 1em
+  padding: 0em .5em
+
+  box-sizing: border-box
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  +ele('options')
+    width: 60%
+    height: 100%
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+    +ele('label')
+      width: 40%
+      height: 100%
+
+      font-size: .8125em
+
+      display: flex
+      align-items: center
+
+      text-transform: capitalize
+
+      color: map-get($color-hloo, medium-gray)
+
+  +ele('buttons')
+    width: 30%
+
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+    +ele('button')
+      height: 100%
+      // border: solid 1px map-get($color-hloo, medium-gray)
+
+      padding: 0
+
+      cursor: pointer
+
+      +ele('icon')
+        font-size: 1.2em
+
+        color: map-get($color-hloo, medium-gray)
+
+        +mod('active')
+          color: map-get($color-hloo, green)
+
+        +mod('refresh')
+          font-size: 1.1em

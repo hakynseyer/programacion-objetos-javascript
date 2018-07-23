@@ -6,7 +6,7 @@ const { Text, Json } = require('../../../../tools/tools')
 
 module.exports = async (req, res) => {
   const { body } = req
-  const { dateFormat, validatorModuleUsers } = req.Resources.Lang
+  const { dateFormat, validatorModuleUsers } = req._RESOURCES.Lang
 
   const salt = bcrypt.genSaltSync(10)
   body.Password = bcrypt.hashSync(body.Password, salt)

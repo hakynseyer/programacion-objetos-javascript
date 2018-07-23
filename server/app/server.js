@@ -32,7 +32,9 @@ module.exports = class Server {
   }
 
   public () {
-    this.app.use('/public', express.static(path.join(__dirname, '../../client/public')))
+    this.app.use('/views', express.static(path.join(__dirname, '../../dist/views')))
+    this.app.use('/js', express.static(path.join(__dirname, '../../dist/assets/js')))
+    this.app.use('/images/app', express.static(path.join(__dirname, '../../dist/assets/images/app')))
     this.app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')))
   }
 
@@ -41,7 +43,7 @@ module.exports = class Server {
   }
 
   engine () {
-    this.app.set('views', path.resolve(__dirname, '../../client/public'))
+    this.app.set('views', path.resolve(__dirname, '../../dist/views'))
 
     this.app.engine('html', engines.swig)
   }
@@ -49,12 +51,7 @@ module.exports = class Server {
   socket () {
     const io = socketIO(this.server)
 
-    io.on('connection', socket => {
-      socket.on('HOLA', () => {
-        console.log('RECIVIDO EL HOLA')
-      })
-    })
-    // require('./tools/chargerSockets')
+    require('./tools/chargerInitSockets')(io)
   }
 
   async start (callback) {

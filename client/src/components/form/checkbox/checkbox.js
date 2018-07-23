@@ -41,35 +41,33 @@ class CheckboxElements {
   }
 
   groupLabel () {
-    return this.Emitter.emit('[formLabel]:getLabel', (
-      {
-        id: null,
-        label: this.label,
-      }
-    ))
+    return _EMITTER.emit('[formLabel]:getLabel', {
+      id: null,
+      label: this.LABEL
+    })
   }
 
   groupCheckboxes () {
     const checkboxes = document.createElement('div')
     checkboxes.classList.add('form__group__checkboxes')
 
-    if (Array.isArray(this.checkboxes)) {
-      for (const check of this.checkboxes) {
+    if (Array.isArray(this.CHECKBOXES)) {
+      for (const check of this.CHECKBOXES) {
         const checkbox = document.createElement('input')
         checkbox.classList.add('form__group__checkboxes__checkbox')
         checkbox.setAttribute('type', 'checkbox')
-        checkbox.setAttribute('name', this.name ? this.name : `checkbox${Random.basic(20)}`)
-        if (check.value) checkbox.setAttribute('value', check.value)
-        checkbox.setAttribute('id', check.id)
+        checkbox.setAttribute('name', this.NAME ? this.NAME : `checkbox${Random.basic(20)}`)
+        if (check.VALUE) checkbox.setAttribute('value', check.VALUE)
+        checkbox.setAttribute('id', check.ID)
 
         const labelCheckbox = document.createElement('label')
         labelCheckbox.classList.add('form__group__checkboxes__label')
-        labelCheckbox.setAttribute('for', check.id)
-        if (Array.isArray(check.label)) {
-          const labelCheckboxText = document.createTextNode(check.label[0])
+        labelCheckbox.setAttribute('for', check.ID)
+        if (Array.isArray(check.LABEL)) {
+          const labelCheckboxText = document.createTextNode(check.LABEL[0])
           labelCheckbox.appendChild(labelCheckboxText)
         } else {
-          const labelCheckboxText = document.createTextNode(check.label)
+          const labelCheckboxText = document.createTextNode(check.LABEL)
           labelCheckbox.appendChild(labelCheckboxText)
         }
 
@@ -91,28 +89,27 @@ class CheckboxElements {
         while (parent.childNodes.length > 2) parent.removeChild(parent.lastChild)
       }
 
-      parent.appendChild(this.Emitter.emit('[formError]:getErrors', {fields: errors}))
+      parent.appendChild(_EMITTER.emit('[formError]:getErrors', {fields: errors}))
     }
   }
 }
 
 class Checkbox extends CheckboxElements {
   get getCheckboxes () {
-    return document.getElementsByName(this.name)
+    return document.getElementsByName(this.NAME)
   }
 
   set setProps (props) {
-    this.label = props.label
-    this.checkboxes = props.checkboxes
-    this.name = props.name
+    this.LABEL = props.LABEL
+    this.CHECKBOXES = props.CHECKBOXES
+    this.NAME = props.NAME
 
     this.building()
   }
 
-  constructor (Emitter) {
+  constructor () {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
   }
 
@@ -125,7 +122,7 @@ class Checkbox extends CheckboxElements {
   }
 
   listeners () {
-    this.Emitter.on('[formCheckbox]:isChecked', (name = null) => {
+    _EMITTER.on('[formCheckbox]:isChecked', (name = null) => {
       let checked = []
 
       if (name) {
@@ -139,7 +136,7 @@ class Checkbox extends CheckboxElements {
       return checked
     })
 
-    this.Emitter.on('[formCheckbox]:clearField', (name = null) => {
+    _EMITTER.on('[formCheckbox]:clearField', (name = null) => {
       if (name) {
         const checkboxes = document.getElementsByName(name)
 
@@ -150,19 +147,19 @@ class Checkbox extends CheckboxElements {
       }
     })
 
-    this.Emitter.on('[formCheckbox]:lauchErrors', data => {
+    _EMITTER.on('[formCheckbox]:lauchErrors', data => {
       if (typeof data.name === 'string' && Array.isArray(data.errors)) {
         if (data.errors.length) this.groupErrors(data.name, data.errors)
       }
     })
 
-    this.Emitter.on('[formCheckbox]:removeErrors', (name = null) => {
+    _EMITTER.on('[formCheckbox]:removeErrors', (name = null) => {
       if (name) CheckboxActions.removeErrors(name)
     })
   }
 
-  static init (Emitter) {
-    return new Checkbox(Emitter)
+  static init () {
+    return new Checkbox()
   }
 }
 

@@ -3,23 +3,22 @@ class LogoElements {
     const container = document.createElement('div')
     container.classList.add('module__logo')
 
-    if (this.urlLogo) container.style.setProperty('--url-logo', `url(${this.urlLogo})`)
+    if (this.LOGO) container.style.setProperty('--url-logo', `url(${this.LOGO})`)
 
     return container
   }
 }
 
 class Logo extends LogoElements {
-  set setLogo (url) {
-    this.urlLogo = url
+  set setProps (props) {
+    this.LOGO = props.LOGO
 
     return this.building()
   }
 
-  constructor (Emitter) {
+  constructor () {
     super()
 
-    this.Emitter = Emitter
     this.listeners()
   }
 
@@ -33,8 +32,8 @@ class Logo extends LogoElements {
 
   }
 
-  static init (Emitter) {
-    return new Logo(Emitter)
+  static init () {
+    return new Logo()
   }
 }
 

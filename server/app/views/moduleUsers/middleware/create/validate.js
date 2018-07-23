@@ -112,7 +112,7 @@ class ValidateServer {
 
 module.exports = (req, res, next) => {
   const { body } = req
-  const { validator, validatorModuleUsers } = req.Resources.Lang
+  const { validator, validatorModuleUsers } = req._RESOURCES.Lang
 
   const validate = new Promise (async (resolve, reject) => {
     const valBasic = new ValidateBasic(validator)
@@ -122,7 +122,7 @@ module.exports = (req, res, next) => {
       await valBasic.Alias(body.Alias)
       await valBasic.Email(body.Email)
       await valBasic.Password(body.Password)
-      await valBasic.RepeatPassword(body.RepeatPassword, {data: body.Password, message: req.Resources.Lang.form.formPassword.label})
+      await valBasic.RepeatPassword(body.RepeatPassword, {data: body.Password, message: req._RESOURCES.Lang.form.formPassword.label})
       valBasic.State(body.State)
 
       if (checkErrors()) res.status(422).send({errors: errorsFields})

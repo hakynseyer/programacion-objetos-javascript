@@ -1,5 +1,8 @@
 import './moduleUsers.sass'
+// import './moduleUsers.pug'
 
-import { CreateBuildBoardUsers } from './create/buildModuleUsers'
+import { BUILD_create } from './create/BUILD_create'
 
-CreateBuildBoardUsers.init()
+BUILD_create.init()
+
+// _EMITTER.checkEvents

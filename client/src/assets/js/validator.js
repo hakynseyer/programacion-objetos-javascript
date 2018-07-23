@@ -1,4 +1,4 @@
-const {validator} = Resources.Lang
+const {validator} = _RESOURCES.Lang
 
 class Validator {
   static empty (data) {
