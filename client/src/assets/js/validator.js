@@ -17,7 +17,7 @@ class Validator {
         if (typeof data !== 'string' || !isNaN(data)) res = validator.type.text
         break
       case 'number':
-        if (isNan(data)) res = validator.type.number
+        if (isNaN(data)) res = validator.type.number
         break
       case 'email':
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
